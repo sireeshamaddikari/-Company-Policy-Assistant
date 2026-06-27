@@ -1,0 +1,63 @@
+/* Syntax highlighting theme for code blocks (rehype-highlight). */
+/* Must precede @tailwind (CSS @import ordering rule). */
+@import "highlight.js/styles/github-dark.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+}
+
+/* ---- Markdown rendering (assistant messages) ---- */
+.markdown > :first-child {
+  margin-top: 0;
+}
+.markdown > :last-child {
+  margin-bottom: 0;
+}
+.markdown p {
+  @apply my-2;
+}
+.markdown h1 {
+  @apply mb-2 mt-4 text-lg font-semibold;
+}
+.markdown h2 {
+  @apply mb-2 mt-4 text-base font-semibold;
+}
+.markdown h3 {
+  @apply mb-1 mt-3 text-sm font-semibold;
+}
+.markdown ul {
+  @apply my-2 list-disc pl-5;
+}
+.markdown ol {
+  @apply my-2 list-decimal pl-5;
+}
+.markdown li {
+  @apply my-0.5;
+}
+.markdown blockquote {
+  @apply my-2 border-l-4 border-slate-200 pl-3 text-slate-500;
+}
+/* Inline code (code not inside a pre). */
+.markdown :not(pre) > code {
+  @apply rounded bg-slate-100 px-1.5 py-0.5 text-[0.85em] text-pink-600;
+}
+.markdown table {
+  @apply my-3 w-full border-collapse text-sm;
+}
+.markdown th,
+.markdown td {
+  @apply border border-slate-200 px-3 py-1.5 text-left;
+}
+.markdown th {
+  @apply bg-slate-50 font-semibold;
+}

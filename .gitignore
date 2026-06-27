@@ -1,0 +1,41 @@
+# ===========================================================================
+# Root .gitignore — broad rules. See backend/.gitignore and frontend/.gitignore
+# for project-specific entries.
+# ===========================================================================
+
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# --- Environment & secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+
+# --- Node / frontend ---
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# --- Logs ---
+*.log
+logs/
+
+# --- Local data & model caches ---
+*.db
+*.sqlite3
+*.faiss
+*.index
+.cache/

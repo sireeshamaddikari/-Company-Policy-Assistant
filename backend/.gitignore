@@ -1,0 +1,35 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Environment & secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Local data: uploads, vector index, SQLite db ---
+data/uploads/*
+!data/uploads/.gitkeep
+data/vectorstore/*
+!data/vectorstore/.gitkeep
+*.db
+*.sqlite3
+*.faiss
+*.index
+
+# --- Caches / tooling ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Model caches (sentence-transformers / HF) ---
+.cache/
