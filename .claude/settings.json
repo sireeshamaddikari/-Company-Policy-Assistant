@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m py_compile app/rag/embeddings.py app/api/deps.py app/core/config.py)",
+      "Bash(.venv/Scripts/python.exe -m pytest -q)"
+    ]
+  }
+}
