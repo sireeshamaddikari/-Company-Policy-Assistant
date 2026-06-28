@@ -31,8 +31,8 @@ class Settings(BaseSettings):
     mistral_temperature: float = 0.2
     mistral_max_tokens: int = 1024
 
-    # --- Embeddings ---
-    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    # --- Embeddings (Mistral hosted API; 1024-dim vectors) ---
+    embedding_model: str = "mistral-embed"
 
     # --- Retrieval / chat ---
     # Number of chunks to retrieve from FAISS per question.
@@ -40,7 +40,11 @@ class Settings(BaseSettings):
     # Minimum cosine similarity for a chunk to count as "relevant". If the best
     # retrieved chunk scores below this, the question is treated as out of scope
     # and a polite fallback is returned without calling the LLM.
-    similarity_threshold: float = 0.3
+    # NOTE: calibrated for `mistral-embed` against real document chunks, whose
+    # cosine scores compress into a narrow band: ~0.58-0.64 for off-topic text,
+    # ~0.71-0.78 for genuinely relevant questions. 0.70 sits in the gap. (Short,
+    # misspelled queries can fall into the off-topic band and be rejected.)
+    similarity_threshold: float = 0.70
 
     # --- Ingestion / chunking ---
     chunk_size: int = 1000

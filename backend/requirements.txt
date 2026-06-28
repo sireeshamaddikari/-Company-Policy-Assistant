@@ -16,9 +16,10 @@ python-dotenv==1.0.1
 # --- Persistence (SQLite via SQLAlchemy ORM) ---
 SQLAlchemy==2.0.36
 
-# --- Vector store & embeddings (local, free) ---
+# --- Vector store (local, free) ---
 faiss-cpu==1.9.0.post1
-sentence-transformers==3.3.1      # all-MiniLM-L6-v2
+# Embeddings are produced by the hosted Mistral API (see app/rag/embeddings.py),
+# so no local model / PyTorch is installed — keeps the deploy image small.
 
 # --- Document loading & splitting (LangChain: loaders/splitters only) ---
 langchain==0.3.13

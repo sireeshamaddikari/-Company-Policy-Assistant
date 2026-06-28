@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 from app.core.config import Settings, get_settings
 from app.db.session import get_db
 from app.ingestion.splitter import TextSplitter
-from app.rag.embeddings import SentenceTransformerEmbedder
+from app.rag.embeddings import MistralEmbedder
 from app.rag.interfaces import Embedder, LLMClient, VectorStore
 from app.rag.llm import MistralClient
 from app.rag.vector_store import FaissVectorStore
@@ -41,9 +41,8 @@ __all__ = [
 
 @lru_cache
 def get_embedder() -> Embedder:
-    """Process-wide embedder singleton (loads the model once)."""
-    settings = get_settings()
-    return SentenceTransformerEmbedder(settings.embedding_model)
+    """Process-wide embedder singleton (hosted Mistral embeddings API)."""
+    return MistralEmbedder(get_settings())
 
 
 @lru_cache
